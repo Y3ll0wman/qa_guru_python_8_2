@@ -2,15 +2,10 @@ import pytest
 from selene.support.shared import browser
 
 
-@pytest.fixture
+@pytest.fixture(scope='function', autouse=True)
 def browser_config():
     browser.config.window_height = 1920
     browser.config.window_height = 1080
-
-
-@pytest.fixture
-def open_google(browser_config):
-    browser.open('https://google.com')
 
     yield
 
